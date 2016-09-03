@@ -1,25 +1,15 @@
-var pype = require('pype-stack');
-
+var http = require('http'),
+    router = require('./temp/router');
+    
 module.exports = {
-  GET: {},
-  POST: {},
   add: function(method, url, fn) {
-    if (typeof fn === 'function') {
-      fn = [fn];
-    }
-    if (Object.prototype.toString.call(fn) === '[object Array]') {
-      if (!this[method][url]) {
-        this[method][url] = [];
-      }
-      this[method][url] = this[method][url].concat(fn);
-    }
+    router.add(method, url, fn);
   },
-  go: function(req, res) {
-    if (this[req.method] && this[req.method][req.url]) {
-      pype(null, this[req.method][req.url])(req, res);
-    } else {
-      res.statusCode = 404;
-      res.end('Error: No such path exists.');
-    }
+  start: function() {
+    var server = http.createServer();
+    server.on('request', router.go.bind(router));
+    server.listen(8080, function(){
+      console.log('Server running..');
+    });
   }
-}
+};
