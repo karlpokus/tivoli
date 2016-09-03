@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/karlpokus/tivoli/issues"
   },
-  "homepage": "https://github.com/karlpokus/tivoli#readme"
+  "homepage": "https://github.com/karlpokus/tivoli#readme",
+  "dependencies": {
+    "pype-stack": "^0.1.1"
+  }
 }
