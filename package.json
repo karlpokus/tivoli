@@ -1,7 +1,7 @@
 {
   "name": "tivoli",
-  "version": "0.0.1",
-  "description": "Router for vanilla node",
+  "version": "0.1.0",
+  "description": "Node server for everyday tinkering",
   "main": "tivoli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,8 @@
     "url": "git+https://github.com/karlpokus/tivoli.git"
   },
   "keywords": [
-    "router",
-    "node"
+    "node",
+    "server"
   ],
   "author": "Karl Pokus <karl.pokus@gmail.com> (https://github.com/karlpokus)",
   "license": "MIT",
