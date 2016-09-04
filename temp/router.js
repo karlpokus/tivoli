@@ -3,6 +3,9 @@ var pype = require('pype-stack');
 module.exports = {
   GET: {},
   POST: {},
+  PUT: {},
+  PATCH: {},
+  DELETE: {},
   add: function(method, url, fn) {
     if (typeof fn === 'function') {
       fn = [fn];
@@ -19,7 +22,7 @@ module.exports = {
       pype(null, this[req.method][req.url])(req, res);
     } else {
       res.statusCode = 404;
-      res.end('Error: No such path exists.');
+      res.end('Error: No such method or path');
     }
   }
 }
