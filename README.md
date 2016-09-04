@@ -9,15 +9,19 @@ $ npm i tivoli
 # usage
 ```javascript
 var tivoli = require('tivoli');
-// add middleware - method, path, middleware (array or single fn)
-tivoli.add('GET', '/', log); // add log to GET to /
-tivoli.add('POST', '/user', [db, parse]); // add db and parse to POST to /user
+// add routes
+tivoli.add('GET', '/', fn); // pass single fn or array of fns
 // add options
 tivoli.add({
-  port: 6789
+  port: 6789 // defaults to process.env.PORT || 8080
 });
 // start
 tivoli.start();
+```
+
+# test
+```
+$ npm test
 ```
 
 # todos
