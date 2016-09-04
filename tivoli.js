@@ -1,9 +1,10 @@
 var http = require('http'),
-    router = require('./temp/router');
+    router = require('karusell');
 
 module.exports = {
   opts: {
-    port: 8080
+    port: 8080,
+    quiet: false
   },
   add: function(method, url, fn) {
     // add options
@@ -20,14 +21,22 @@ module.exports = {
       router.add.apply(router, arguments);
     }
   },
-  start: function() {
+  start: function(cb) {
     // apply opts
-    var port = process.env.PORT || this.opts.port;
+    var port = process.env.PORT || this.opts.port,
+        quiet = this.opts.quiet,
+        feedback = function(){
+          console.log('Server running on port ' + port);
+        };
     // init
-    var server = http.createServer();
-    server.on('request', router.go.bind(router));
-    server.listen(port, function(){
-      console.log('Server running on port ' + port);
+    this.server = http.createServer();
+    this.server.on('request', router.go);
+    this.server.listen(port, function(){
+      if (!quiet) {feedback()};
+      if (cb) return cb();
     });
+  },
+  stop: function(cb) {
+    this.server.close(cb);
   }
 };
