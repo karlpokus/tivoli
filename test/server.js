@@ -13,4 +13,7 @@ var tivoli = require('../tivoli'),
 
 tivoli.add('GET', '/', [logger, shouter]);
 tivoli.add('GET', '/', finalHandler);
+tivoli.add({
+  port: 6780
+});
 tivoli.start();
