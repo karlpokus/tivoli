@@ -1,7 +1,7 @@
 [![npm version](https://badge.fury.io/js/tivoli.svg)](https://badge.fury.io/js/tivoli)
 
 # tivoli
-A node server for everyday tinkering. A poor mans express clone if you will. Built-in router and some useful options. Very experimental. Not for production.
+A node development server for everyday tinkering. A poor mans express clone if you will. Built-in router and some useful options. Very experimental. Not for production.
 
 # install
 ```
@@ -32,8 +32,10 @@ options
 - [ ] default finalHandler
 - [ ] errorHandler
 - [ ] cors
-- [ ] bodyParsing
-- [ ] queryParsing
+- [x] dataparser
+- [ ] dataparser - fix types for urlencoded strings
+- [ ] querystringparser
+- [ ] fileparser - multipart/form-data
 
 # license
 MIT
