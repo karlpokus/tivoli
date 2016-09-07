@@ -1,0 +1,8 @@
+--------------------------b40a23622e969b04
+Content-Disposition: form-data; name="filedata"; filename="test.csv"
+Content-Type: application/octet-stream
+
+name,age
+mike,23
+julie,80
+--------------------------b40a23622e969b04--

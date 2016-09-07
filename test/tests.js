@@ -9,19 +9,19 @@ var test = require('tape'),
 tivoli.add('GET', '/', finalHandler);
 tivoli.add({
   port: 6789,
-  quiet: true
+  logOnStart: false
 });
 
 test('the basics', function(t){
 
   tivoli.start(function(){
-    t.true(tivoli.server.listening, '.start');
-
+    t.true(this.server.listening, '.start');
+    
     http.get('http://localhost:6789', function(res){
       t.equal(res.statusCode, 200, 'ok 200');
-
+      
       tivoli.stop(function(){
-        t.false(tivoli.server.listening, '.stop');
+        t.false(this.server.listening, '.stop');
 
         t.end();
       });
