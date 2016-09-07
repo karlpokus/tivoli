@@ -1,10 +1,22 @@
 var http = require('http'),
-    router = require('karusell');
+    router = require('./lib/router'), // 'karusell'
+    semver = require('semver'),
+    polyFill = function(t){
+      if (semver.lt(process.version, 'v5.7.0')) {
+        t.server.on('listening', function(){
+          t.server.listening = true;
+        });
+        t.server.on('close', function(){
+          t.server.listening = false;
+        });
+      }
+    };
 
 module.exports = {
   opts: {
     port: 8080,
-    quiet: false
+    logOnStart: true,
+    dataparser: false
   },
   add: function(method, url, fn) {
     // add options
@@ -22,21 +34,27 @@ module.exports = {
     }
   },
   start: function(cb) {
-    // apply opts
+    // fix
+    if (cb) {cb = cb.bind(this)};
+    // pass opts to router
+    router.add(this.opts);
+    // apply opts to server
     var port = process.env.PORT || this.opts.port,
-        quiet = this.opts.quiet,
+        logOnStart = this.opts.logOnStart,
         feedback = function(){
           console.log('Server running on port ' + port);
         };
     // init
     this.server = http.createServer();
     this.server.on('request', router.go);
+    polyFill(this);
     this.server.listen(port, function(){
-      if (!quiet) {feedback()};
+      if (logOnStart) {feedback()};
       if (cb) return cb();
     });
   },
   stop: function(cb) {
+    if (cb) {cb = cb.bind(this)};
     this.server.close(cb);
   }
 };
