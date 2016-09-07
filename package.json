@@ -1,6 +1,6 @@
 {
   "name": "tivoli",
-  "version": "0.1.2",
+  "version": "0.2.2",
   "description": "Node server for everyday tinkering",
   "main": "tivoli.js",
   "scripts": {
@@ -24,6 +24,8 @@
     "karusell": "^0.2.0"
   },
   "devDependencies": {
+    "pype-stack": "^0.1.1",
+    "semver": "^5.3.0",
     "tape": "^4.6.0"
   }
 }
