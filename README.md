@@ -39,6 +39,7 @@ options
 - [ ] dataparser - fix types for urlencoded strings
 - [x] querystringparser
 - [ ] fileparser - multipart/form-data
+- [ ] [logfile](https://nodejs.org/api/fs.html#fs_fs_appendfile_file_data_options_callback)
 
 # license
 MIT
