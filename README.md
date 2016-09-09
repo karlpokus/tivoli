@@ -15,7 +15,10 @@ var tivoli = require('tivoli');
 tivoli.add('GET', '/', fn); // pass single fn or array of fns
 // add options
 tivoli.add({
-  port: 6789 // defaults to process.env.PORT || 8080
+  port: 6789, // defaults to process.env.PORT || 8080
+  logOnStart: true, // defaults to false
+  dataparser: false, // defaults to false
+  queryparser: false // defaults to false
 });
 // start
 tivoli.start();
@@ -34,7 +37,7 @@ options
 - [ ] cors
 - [x] dataparser
 - [ ] dataparser - fix types for urlencoded strings
-- [ ] querystringparser
+- [x] querystringparser
 - [ ] fileparser - multipart/form-data
 
 # license

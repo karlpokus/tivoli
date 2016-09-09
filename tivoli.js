@@ -16,7 +16,8 @@ module.exports = {
   opts: {
     port: 8080,
     logOnStart: true,
-    dataparser: false
+    dataparser: false,
+    queryparser: false
   },
   add: function(method, url, fn) {
     // add options
