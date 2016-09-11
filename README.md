@@ -18,7 +18,8 @@ tivoli.add({
   port: 6789, // defaults to process.env.PORT || 8080
   logOnStart: true, // defaults to false
   dataparser: false, // defaults to false
-  queryparser: false // defaults to false
+  queryparser: false, // defaults to false
+  cors: true // defaults to false
 });
 // start
 tivoli.start();
@@ -34,12 +35,13 @@ options
 - [x] port
 - [ ] default finalHandler
 - [ ] errorHandler
-- [ ] cors
+- [x] cors
 - [x] dataparser
-- [ ] dataparser - fix types for urlencoded strings
-- [x] querystringparser
+- [ ] dataparser and queryparser - fix data types
+- [x] queryparser
 - [ ] fileparser - multipart/form-data
 - [ ] [logfile](https://nodejs.org/api/fs.html#fs_fs_appendfile_file_data_options_callback)
+- [x] use hello for tests
 
 # license
 MIT
