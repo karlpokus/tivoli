@@ -14,10 +14,12 @@ var http = require('http'),
 
 module.exports = {
   opts: {
+    // defaults
     port: 8080,
     logOnStart: true,
     dataparser: false,
-    queryparser: false
+    queryparser: false,
+    cors: false
   },
   add: function(method, url, fn) {
     // add options
