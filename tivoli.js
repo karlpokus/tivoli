@@ -19,7 +19,9 @@ module.exports = {
     logOnStart: true,
     dataparser: false,
     queryparser: false,
-    cors: false
+    cors: false,
+    finalhandler: false,
+    errorhandler: false
   },
   add: function(method, url, fn) {
     // add options

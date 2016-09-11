@@ -5,26 +5,27 @@ var test = require('tape'),
       return Object.keys(o).length === 0;
     },
     janitor = function(req, res, next){
-      req.out = JSON.stringify({
+      req.out = {
         data: req.data,
         query: req.query
-      });
-      return next();
-    },
-    finalHandler = function(req, res) {
+      };
       res.statusCode = 200;
-      res.end(req.out);
+      return next();
     };
 
 // setup
-tivoli.add('GET', '/', [janitor, finalHandler]);
-tivoli.add('POST', '/cats', [janitor, finalHandler]);
+tivoli.add('GET', '/', janitor);
+tivoli.add('POST', '/cats', janitor);
 tivoli.add({
   port: 6789,
   logOnStart: false,
   dataparser: true,
   queryparser: true,
-  cors: true
+  cors: true,
+  errorhandler: true,
+  finalhandler: function(req, res){
+    res.end(JSON.stringify(req.out));
+  }
 });
 
 test('.start', function(t){

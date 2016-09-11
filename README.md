@@ -11,19 +11,28 @@ $ npm i tivoli
 # usage
 ```javascript
 var tivoli = require('tivoli');
-// add routes
-tivoli.add('GET', '/', fn); // pass single fn or array of fns
-// add options
-tivoli.add({
-  port: 6789, // defaults to process.env.PORT || 8080
-  logOnStart: true, // defaults to false
-  dataparser: false, // defaults to false
-  queryparser: false, // defaults to false
-  cors: true // defaults to false
-});
+// add routes - pass function or array of functions
+tivoli.add('GET', '/', fn);
+// add options object
+tivoli.add({});
 // start
 tivoli.start();
 ```
+
+### Options
+`port` *number* defaults to process.env.PORT || 8080
+
+`logOnStart` *boolean* defaults to false
+
+`dataparser` *boolean* defaults to false
+
+`queryparser` *boolean* defaults to false
+
+`cors` *boolean* defaults to false
+
+`finalhandler` *boolean* or *function* defaults to false
+
+`errorhandler` *boolean* or *function* defaults to false
 
 # test
 ```
@@ -31,10 +40,9 @@ $ npm test
 ```
 
 # todos
-options
 - [x] port
-- [ ] default finalHandler
-- [ ] errorHandler
+- [x] finalHandler
+- [x] errorHandler
 - [x] cors
 - [x] dataparser
 - [ ] dataparser and queryparser - fix data types
@@ -42,6 +50,7 @@ options
 - [ ] fileparser - multipart/form-data
 - [ ] [logfile](https://nodejs.org/api/fs.html#fs_fs_appendfile_file_data_options_callback)
 - [x] use hello for tests
+- [ ] karusell
 
 # license
 MIT
