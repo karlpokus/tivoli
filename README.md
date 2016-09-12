@@ -20,19 +20,21 @@ tivoli.start();
 ```
 
 ### Options
-`port` *number* defaults to process.env.PORT || 8080
+`port` *number* Defaults to `process.env.PORT || 8080`
 
-`logOnStart` *boolean* defaults to false
+`logOnStart` *boolean* Defaults to false
 
-`dataparser` *boolean* defaults to false
+`dataparser` *boolean* Parse json or urlencoded data based on `headers: content-type`. Defaults to false
 
-`queryparser` *boolean* defaults to false
+`queryparser` *boolean* Parse querystring in url into an object. Defaults to false
 
-`cors` *boolean* defaults to false
+`cors` *boolean* Enable cors on all routes. Defaults to false
 
-`finalhandler` *boolean* or *function* defaults to false
+`log` *boolean* Log timestamp and request data to `logs.txt` at `process.env.PWD`. Defaults to false
 
-`errorhandler` *boolean* or *function* defaults to false
+`finalhandler` *boolean* || *function* End response with stringified `req.out`. Defaults to false
+
+`errorhandler` *boolean* || *function* End response, log stringified error, set statusCode to 500. Defaults to false
 
 # test
 ```
@@ -48,7 +50,7 @@ $ npm test
 - [ ] dataparser and queryparser - fix data types
 - [x] queryparser
 - [ ] fileparser - multipart/form-data
-- [ ] [logfile](https://nodejs.org/api/fs.html#fs_fs_appendfile_file_data_options_callback)
+- [x] logger
 - [x] use hello for tests
 - [ ] karusell
 
