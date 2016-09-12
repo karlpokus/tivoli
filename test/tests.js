@@ -22,6 +22,7 @@ tivoli.add({
   dataparser: true,
   queryparser: true,
   cors: true,
+  log: true,
   errorhandler: true,
   finalhandler: function(req, res){
     res.end(JSON.stringify(req.out));

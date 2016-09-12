@@ -21,7 +21,8 @@ module.exports = {
     queryparser: false,
     cors: false,
     finalhandler: false,
-    errorhandler: false
+    errorhandler: false,
+    log: false
   },
   add: function(method, url, fn) {
     // add options
